@@ -201,6 +201,8 @@ npm publish
 ```
 
 ## Update history
+### 2.4.5
+- Change condition to display enhanced dependencies (Fix: https://github.com/Arborator/arborator-frontend/issues/465)
 ### 2.4.4, 2.4.3
 - minor fixes
 ### 2.4.2

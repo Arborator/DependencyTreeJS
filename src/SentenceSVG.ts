@@ -319,8 +319,11 @@ export class SentenceSVG extends EventDispatcher {
     for (const tokenSVG of this.tokenSVGs) {
       for (const [depID, depDEPREL] of Object.entries(tokenSVG.tokenJson.DEPS)) {
         const depTokenJson = getNodeFromTreeJson(this.treeJson, depID);
-        if (depTokenJson && depTokenJson.ID !== tokenSVG.tokenJson.HEAD.toString()) {
-          // we don't redraw an enhanced relation that is already a normal relation
+        if (
+          depTokenJson &&
+          (depTokenJson.ID !== tokenSVG.tokenJson.HEAD.toString() || tokenSVG.tokenJson.DEPREL !== depDEPREL)
+        ) {
+          // we don't redraw an enhanced relation that is already a normal relation with the same deprel
           const depTokenSVG = this.tokenSVGs[this.tokenIndexToSvgPosition[depID]];
           const headCoordX = depTokenSVG.centerX;
           const depInfo = { ID: depID, DEPREL: depDEPREL };
